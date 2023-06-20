@@ -1,0 +1,192 @@
+<!doctype html>
+    <head>
+        <link rel="stylesheet" type="text/css" media="all" href="../css/index.css">
+        <link rel="stylesheet" type="text/css" media="all" href="../css/profile.css">
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script type="text/javascript" src="../index.js"></script>
+
+        <title> ThatOneGuy </title>
+    </head>
+    <body>
+        <div id="sidebar">
+            <div id="sidebar_container">
+                <div id="user_container" class="icon_container">
+                   <a href="profile.html"><p id="nav_user" class="nav_icon"></p></a>
+                   <p class="nav_text">USER</p>
+                </div>
+    
+                <div id="nav_center">
+                    <div class="icon_container">
+                        <div id="nav_search" class="nav_icon"></div>
+                        <p class="nav_text">SEARCH</p>
+                    </div>
+
+                    <div id="search-sidebar-container">
+                        <input class="search-bar" type="text" placeholder="Search..." >
+                    </div>
+
+                    <div class="icon_container">
+                        <a href="../index.html"><p class="nav_icon" id="nav_home"></p></a>
+                        <p class="nav_text">HOME</p>
+                    </div>
+
+                    <div class="icon_container">
+                        <a href="genre.html"> <p class="nav_icon" id="nav_genre"></p></a>
+                        <p class="nav_text">GENRE</p>
+                    </div>
+    
+                    <div class="icon_container">
+                        <a href="forum.html"><p id="nav_forum" class="nav_icon"></p></a>
+                        <p class="nav_text">FORUM</p>
+                    </div>
+                </div>
+    
+                <div id="create_container" class="icon_container">
+                    <a href="forum.html"><p id="nav_create" class="nav_icon"></p></a>
+                    <p class="nav_text">CREATE</p>
+                </div>
+            </div> 
+        </div>
+
+        <div id="user-page-container">
+            <div id="user-page-header">
+                <span>USER PROFILE</span>
+            </div>
+            <div id="user-page-body">
+                <div id="user-info">
+                    
+                    <div id="user-profile">
+                        <img src="../elements/thatoneguy.jpg" alt="Profile Picture" id="user-picture">
+                        <hr>
+                        <p id="username">ThatOneGuy</p>
+                    </div>
+
+                    <div id="user-description">
+                        <p>About</p>
+                        <div id="description-box">
+                            <p id="description-text">
+                                I love games and memes.
+                            </p>
+                        </div>
+                    </div>
+                
+                </div>
+                <div id="user-activities">
+                    <div class="user-tabs post">
+                        <div class="user-tabs-title">
+                            <span>Recent Posts</span>
+                            <a href="">view all...</a>
+                            
+                        </div>
+
+                        <div class="profile-box" id="recent-post-1">
+                            <div class="recent-post-content">
+                                <a href="" class="user-post-link"></a>
+                                <div></div>
+                            </div>
+                            
+                            <div class="recent-post-date">
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="profile-box" id="recent-post-2">
+                            
+                        </div>
+                        <div class="profile-box" id="recent-post-2">
+
+                        </div>
+                    </div>
+                    <div class="user-tabs followed-games">
+                        <div class="user-tabs-title">
+                            <span>Following Games</span>
+                            <a href="">view all...</a>
+                        </div>
+                        <div class="following-tabs">
+                            <a href="apexlegends.html"><img class="game-following" src="../elements/apex.jpg" alt="Apex Legends"></a>
+                            <a href="valorant.html"><img class="game-following" src="../elements/valorant.jpg" alt="Valorant"></a>
+                        </div>
+                    </div>
+                    <div class="user-tabs followings">
+                        <div class="user-tabs-title">
+                            <span>Following Users</span>
+                            <a href="">view all...</a>
+                        </div>
+                        <div class="profile-box" id="recent-following-1">
+                            <img src="../elements/youronlyfriend.png" alt="Profile Picture">
+                            <a href="youronlyfriend.html" class="user-link"><span>YourOnlyFriend</span></a>
+                        </div>
+                    </div>
+                    <div class="user-tabs comments">
+                        <div class="user-tabs-title">
+                            <span>Comments</span>
+                            <a href="">view all...</a>
+                            
+                        </div>
+                        <div class="profile-box" id="recent-comment-1">
+                            <div class="recent-comment-content">
+                                <span>On: <a href="post1.html" class="user-post-link">New Bug Found on ER v1.01 </a></span>
+                                <p>this is actually funny!</p>
+                            </div>
+                            
+                            <div class="recent-comment-date">
+                                <span> Commented on:</span>
+                                <span> June 13, 2023</span>
+                            </div>
+                        </div>
+                        
+                        <div class="profile-box" id="recent-comment-2">
+                            <div class="recent-comment-content">
+                                <span>On: <a href="post2.html" class="user-post-link">Found this new Sova Lineup </a></span>
+                                <p>LMAO</p>
+                            </div>
+                            
+                            <div class="recent-comment-date">
+                                <span> Commented on:</span>
+                                <span> June 13, 2023</span>
+                            </div>
+                        </div>
+
+                        <div class="profile-box" id="recent-comment-3">
+                            <div class="recent-comment-content">
+                                <span>On: <a href="post3.html" class="user-post-link">This bug just ruined my match </a></span>
+                                <p>LMAO</p>
+                            </div>
+                            
+                            <div class="recent-comment-date">
+                                <span> Commented on:</span>
+                                <span> June 11, 2023</span>
+                            </div>
+                        </div>
+
+                        <div class="profile-box" id="recent-comment-4">
+                            <div class="recent-comment-content">
+                                <span>On: <a href="post4.html" class="user-post-link">Rendering glitch in Mario Odyssey</a></span>
+                                <p>bruh</p>
+                            </div>
+                            
+                            <div class="recent-comment-date">
+                                <span> Commented on:</span>
+                                <span> June 11, 2023</span>
+                            </div>
+                        </div>
+
+                        <div class="profile-box" id="recent-comment-5">
+                            <div class="recent-comment-content">
+                                <span>On: <a href="post5.html" class="user-post-link">Punching someone makes their eyes pop out</a></span>
+                                <p>lol</p>
+                            </div>
+                            
+                            <div class="recent-comment-date">
+                                <span> Commented on:</span>
+                                <span> June 10, 2023</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
