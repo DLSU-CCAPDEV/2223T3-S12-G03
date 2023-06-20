@@ -5,6 +5,12 @@ File Location System (not final):
  - all main files should be inside the "Files" folder (.html, .css, .js)
  - all images and other elements should placed inside the "elements" folder
 
+TODO (incomplete functionalities):
+    ● Logout
+    ● Edit / Delete a post
+    ● Edit / Delete a comment
+    ● Search
+
 
 MP Specs(minimum functionalities):
 
