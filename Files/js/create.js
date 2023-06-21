@@ -129,9 +129,9 @@ $(document).ready(function(){
         $(post_image).attr("src", uploaded_image);
 
         $(post_title).text(post.title);
-        $(upvote_icon).attr("src", "../images/forum_icons.png");
-        $(downvote_icon).attr("src", "../images/forum_icons.png");
-        $(comment_icon).attr("src", "../images/comment-icon.png");
+        $(upvote_icon).attr("src", "../elements/forum_icons.png");
+        $(downvote_icon).attr("src", "../elements/forum_icons.png");
+        $(comment_icon).attr("src", "../elements/comment-icon.png");
         $(comment_counter).text("0");
         $(vote_counter).text("0");
         $(comment_counter).text("0");

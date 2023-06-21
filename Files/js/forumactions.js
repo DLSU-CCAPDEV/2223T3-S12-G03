@@ -3,7 +3,7 @@ $(document).ready(function() {
 
 	document.body.addEventListener('click', function(e) {
 		if (/\bupvote\b/.test(e.target.className) || /\bdownvote\b/.test(e.target.className)) {
-			let button = e.target
+			let button = e.target;
 
 			if (e.target.className == "upvote") {
 				upvote(button);
@@ -25,7 +25,7 @@ $(document).ready(function() {
 		if (!$(upvote_button).data('clicked') && $(downvote_button).data('clicked') != true) {
 			let votes = Number($(vote_count).text()) + 1;
 			$(vote_count).text(votes);
-			upvote_button.style.opacity = "0.7"
+			upvote_button.style.opacity = "0.7";
 
 			$(upvote_button).data('clicked', true);
 		}
@@ -48,14 +48,14 @@ $(document).ready(function() {
 		if (!$(downvote_button).data('clicked') && $(upvote_button).data('clicked') != true) {
 			let votes = Number($(vote_count).text()) - 1;
 			$(vote_count).text(votes);
-			downvote_button.style.opacity = "0.7"
+			downvote_button.style.opacity = "0.7";
 			$(downvote_button).data('clicked', true);
 		}
 
 		else if ($(downvote_button).data('clicked') == true) {
 			let votes = Number($(vote_count).text()) + 1;
 			$(vote_count).text(votes);
-			downvote_button.style.opacity = "1"
+			downvote_button.style.opacity = "1";
 			$(downvote_button).data('clicked', false);
 		}
 

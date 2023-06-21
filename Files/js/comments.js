@@ -75,7 +75,7 @@ $(document).ready(function() {
 
         var year = today.getFullYear();
         var month = today.getMonth();
-        var day = today.getDay() + 1;
+        var day = today.getDate();
 
         var monthArray = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
 
