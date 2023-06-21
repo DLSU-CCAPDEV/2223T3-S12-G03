@@ -1,8 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 body{
     margin: 0;
     padding: 0;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background: linear-gradient(120deg, rgb(80, 87, 89), rgb(51, 240, 240));
+    font-family: 'Montserrat', sans-serif;
+    background: url('../elements/bgimg.png') no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: var(--background);
 
     height: 100vh;
     overflow: hidden;
@@ -12,23 +17,25 @@ body{
     align-items: center;
 }
 
-.login-form{
-    background-color : white;
+.login-form, .registration-form{
+    background-color :  #26594b;
     border-radius: 10px;
+}
+
+.login-form{
     width: 400px;
     height: 550px;
 }
 
 .registration-form{
-    background-color : white;
-    border-radius: 10px;
     width: 550px;
     height: 500px;
 }
 
 .login-form h1, .registration-form h1{
+    color: white;
     text-align: center;
-    border-bottom: 2px solid silver;
+    border-bottom: 2px solid white;
 
     padding-bottom: 20px;
     margin-bottom: 70px;
@@ -43,13 +50,14 @@ body{
 }
 
 .input-field{
-    border-bottom: 2px solid gray;
+    border-bottom: 2px solid white;
     margin: 20px 0;
 
     position: relative;
 }
 
 .input-field input{
+    color: white;
     width: 100%;
     padding: 0 5px;
     height: 40px;
@@ -61,7 +69,7 @@ body{
 }
 
 .input-field label{
-    color: gray;
+    color: lightgray;
     pointer-events: none;
     transform: translateY(-8%);
     
@@ -84,6 +92,7 @@ body{
 }
 
 .remember-me label{
+    color: white;
     position: absolute;
     left: 25px;
     top: -1px;
@@ -98,27 +107,28 @@ input[type="submit"]{
     font-size: 16px;
     font-weight: 700;
     color: white;
-    background-color: rgb(51, 240, 240);
+    background-color: #56d0ae;
     margin: 10px 0;
     width: 100%;
     height: 50px;
-    border: 1px solid;
+    border: 0px solid;
     border-radius: 25px;
     
 }
 
 input[type="submit"]:hover{
     transition: 0.2s;
-    background-color: rgb(80, 87, 89);
+    background-color: #252238;
     border: 5px;
 }
 
 input[type="submit"]:active{
-    background-color: rgb(51, 240, 240);
+    background-color: #56d0ae;
     transform: scale(105%);
 }
 
 .switch-page{
+    color: white;
     text-align: center;
     margin: 20px 0;
 }
