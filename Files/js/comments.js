@@ -1,9 +1,11 @@
 $(document).ready(function() {
 
+
     //Add Event Listener to the Button
     document.getElementById('post-comment').addEventListener('click', postComment, false);
+    
 
-    function postComment ()
+    function postComment()
     {
         //get Data
         let Date = getDateToday();
@@ -17,6 +19,7 @@ $(document).ready(function() {
             console.log(Comment);
             submitComment(Date, Comment, Username);
             document.getElementById("comment-input-box").value = "";
+            removeComment();
         }
     }
 
@@ -54,6 +57,14 @@ $(document).ready(function() {
 
         const dateText =  document.createElement("span");
         dateText.textContent = Date;
+
+        //Comment remove
+        const commentRemove = document.createElement("div");
+        commentRemove.classList.add("comment-remove");
+
+        const removeButton = document.createElement("button");
+        removeButton.textContent = "X";
+        removeButton.classList.add("remove-button");
         
         commentAuthor.appendChild(link);
 
@@ -62,11 +73,21 @@ $(document).ready(function() {
         commentDate.appendChild(text2);
         commentDate.appendChild(dateText);
 
+        commentRemove.appendChild(removeButton);
+
         newCommentDiv.appendChild(commentAuthor);
         newCommentDiv.appendChild(commentContent);
         newCommentDiv.appendChild(commentDate);
+        newCommentDiv.appendChild(commentRemove);
 
         document.getElementsByClassName("comments-container").item(0).append(newCommentDiv);
+        
+    }
+
+    function removeComment(){
+        $(".comment-box").on("click", ".remove-button", function(){
+            $(this).closest(".comment-box").remove();
+        });
     }
 
     function getDateToday()

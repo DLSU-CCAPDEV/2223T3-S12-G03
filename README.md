@@ -6,11 +6,10 @@ File Location System (not final):
  - all images and other elements should placed inside the "elements" folder
 
 TODO (incomplete functionalities):
-    ● Logout
-    ● Edit / Delete a post
-    ● Edit / Delete a comment
-    ● Search
-
+- Logout
+- Edit / Delete a post
+- Edit a comment
+- Search
 
 MP Specs(minimum functionalities):
 

@@ -319,6 +319,10 @@ a.post-title-link:hover {
     display: block;
 }
 
+.remove-button{
+    background-color: rgb(162, 45, 45);
+}
+
 .edit-button {
     align-self: center;
     color: var(--maintext);
