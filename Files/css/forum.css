@@ -319,6 +319,12 @@ a.post-title-link:hover {
     display: block;
 }
 
+.post-remove{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
 .remove-button{
     background-color: rgb(162, 45, 45);
 }

@@ -41,6 +41,7 @@ $(document).ready(function(){
             
             refreshDisplay(post);
             resetForm();
+            deleteForm();
         }
     });
 
@@ -78,6 +79,8 @@ $(document).ready(function(){
         let comment = document.createElement("div");
         let comment_icon = document.createElement("img");
         let comment_counter = document.createElement("p");
+        let post_remove = document.createElement("div");
+        let remove_button = document.createElement("button");
        
         $(forum_post).addClass("forum-post");
         $(top_bar).addClass("top-bar");
@@ -93,8 +96,10 @@ $(document).ready(function(){
         $(comment_icon).addClass("comment");
         $(comment_counter).addClass("comment-count");
         $(post_image).addClass("post-image");
+        $(post_remove).addClass("post-remove");
+        $(remove_button).addClass("remove-button");
 
-        
+        post_remove.appendChild(remove_button);
 
         $(forumactions).append(upvote_icon);
         $(forumactions).append(vote_counter);
@@ -113,6 +118,7 @@ $(document).ready(function(){
 
         $(top_bar).append(game_post);
         $(top_bar).append(post_title_link);
+        $(top_bar).append(post_remove);
 
         $(post_body).append(post_image);
 
@@ -135,6 +141,7 @@ $(document).ready(function(){
         $(comment_counter).text("0");
         $(vote_counter).text("0");
         $(comment_counter).text("0");
+        $(remove_button).text("X");
 
         
         $(parent).prepend(forum_post);
@@ -170,4 +177,10 @@ $(document).ready(function(){
         $("#display-image").attr("src", "");
         hideError();
 	}
+
+    function deleteForm(){
+        $(".forum-post").on("click", ".remove-button", function(){
+            $(this).closest(".forum-post").remove();
+        });
+    }
 });
