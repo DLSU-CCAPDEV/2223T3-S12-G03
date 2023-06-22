@@ -218,6 +218,11 @@ a:visited {
     background-position: -89px -47px;
 }
 
+#nav_logout{
+    background: url('../elements/logout-icon.png') no-repeat;
+    background-size: 27px 27px;
+}
+
 .nav_text {
     margin: 0px;
     font-size: 10px;
