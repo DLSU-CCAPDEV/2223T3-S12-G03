@@ -9,7 +9,22 @@ $(document).ready(function() {
 			search_bar.style.display = "block";
 		else
 			search_bar.style.display = "none";
+		
+		search_bar.addEventListener('keypress', function (e) {
+			if (e.key === 'Enter') {
+				window.location.href = "html/forum.html";
+			}
+				
+		});
 
 	});
 
+	header_search = document.getElementById("search-bar");
+
+	header_search.addEventListener('keypress', function (e) {
+		if (e.key === 'Enter') {
+			window.location.href = "html/forum.html";
+		}
+		
+	});
 })
