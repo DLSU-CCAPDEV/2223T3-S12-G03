@@ -12,7 +12,7 @@ $(document).ready(function() {
 		
 		search_bar.addEventListener('keypress', function (e) {
 			if (e.key === 'Enter') {
-				window.location.href = "html/forum.html";
+				window.location.href = "forum.html";
 			}
 				
 		});
