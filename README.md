@@ -6,8 +6,8 @@ File Location System (not final):
  - all images and other elements should placed inside the "elements" folder
 
 TODO (incomplete functionalities):
-- Edit a comment
-- Search
+- Edit a comment (fix bugs)
+- Improve design
 
 MP Specs(minimum functionalities):
 
