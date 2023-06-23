@@ -19,6 +19,12 @@ $(document).ready(function() {
 
 	});
 
+	
+});
+
+// yes. it needs to be separated. if both functions are in the same document.ready block, one function would not work.
+$(document).ready(function(){
+
 	header_search = document.getElementById("search-bar");
 
 	header_search.addEventListener('keypress', function (e) {
@@ -27,4 +33,5 @@ $(document).ready(function() {
 		}
 		
 	});
-})
+
+});
