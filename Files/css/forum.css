@@ -268,6 +268,7 @@ a.post-title-link:hover {
     display: flex;
     border: 0.5px solid;
     border-color: #17132a;
+    position: relative;
 }
 
 .comment-author {
@@ -317,6 +318,12 @@ a.post-title-link:hover {
 
 .comment-date > span{
     display: block;
+}
+
+.comment-remove{
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 .post-remove{

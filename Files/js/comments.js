@@ -20,6 +20,7 @@ $(document).ready(function() {
             submitComment(Date, Comment, Username);
             document.getElementById("comment-input-box").value = "";
             removeComment();
+            editComment();
         }
     }
 
@@ -65,7 +66,16 @@ $(document).ready(function() {
         const removeButton = document.createElement("button");
         removeButton.textContent = "X";
         removeButton.classList.add("remove-button");
+
+        //Comment edit
+        const commentEdit = document.createElement("div");
+        commentEdit.classList.add("edit-button");
+
+        const editButton = document.createElement("button");
+        editButton.textContent = "Edit";
+        editButton.setAttribute("id","frEditBtn");
         
+        //
         commentAuthor.appendChild(link);
 
         commentContent.appendChild(text);
@@ -75,10 +85,14 @@ $(document).ready(function() {
 
         commentRemove.appendChild(removeButton);
 
+        commentEdit.appendChild(editButton);
+
+        //
         newCommentDiv.appendChild(commentAuthor);
         newCommentDiv.appendChild(commentContent);
         newCommentDiv.appendChild(commentDate);
         newCommentDiv.appendChild(commentRemove);
+        newCommentDiv.appendChild(commentEdit);
 
         document.getElementsByClassName("comments-container").item(0).append(newCommentDiv);
         
@@ -87,6 +101,19 @@ $(document).ready(function() {
     function removeComment(){
         $(".comment-box").on("click", ".remove-button", function(){
             $(this).closest(".comment-box").remove();
+        });
+    }
+
+    function editComment(){
+        $(".comment-box").on("click", "#frEditBtn", function(){
+            if($(this).text() == "Edit"){
+                $(this).text("Confirm");
+                $(".comment-content > p").attr("contenteditable", "true");
+            }
+            else{
+                $(this).text("Edit");
+                $(".comment-content > p").attr("contenteditable", "false");
+            }
         });
     }
 
