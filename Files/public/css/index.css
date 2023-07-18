@@ -303,3 +303,15 @@ a:visited {
     position: relative;
     top: 30px;
 }
+
+#error-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    font-size: 3vw;
+
+    height: 100vh;
+    
+}
