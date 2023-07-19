@@ -6,10 +6,16 @@ const mongoose = require("mongoose")
 
 const url = process.env.DB_URL;
 
+// additional connection options
+const options = {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+};
+
 const database = {
 
     connect: function () {
-        mongoose.connect(url, function(error) {
+        mongoose.connect(url, options, function(error) {
             if(error) throw error;
             console.log('Connected to: ' + url);
         });
