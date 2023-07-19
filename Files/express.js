@@ -14,7 +14,11 @@ const hbs = require("hbs")
 
 const routes = require("./routes/routes.js")
 
-// const db = require("./models/db.js")
+const db = require("./models/db.js")
+const commentModel_db = require("./models/CommentModel.js")
+const postModel_db = require("./models/PostModel.js")
+const uploadMiddleware_db = require("./models/uploadMiddleware.js")
+const userModel_db = require("./models/UserModel.js")
 
 const app = express()
 
@@ -43,7 +47,11 @@ app.use(function (req, res) {
 
 
 // connects to the database
-// db.connect()
+db.connect()
+commentModel_db.connect()
+postModel_db.connect()
+uploadMiddleware_db.connect()
+userModel_db.connect()
 
 app.listen(port, hostname, function(){
     console.log("Server running at: ")
