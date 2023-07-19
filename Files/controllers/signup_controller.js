@@ -1,5 +1,10 @@
+/*
 import db from '../models/db.js';
 import User from '../models/UserModel.js';
+*/
+
+const db = require("../models/db.js")
+const User = require("../models/UserModel.js")
 
 const signup_controller = {
     getCheckEmail: function (req, res) {
@@ -48,4 +53,5 @@ const signup_controller = {
     }
 }
 
-export default signup_controller;
+module.exports = signup_controller
+//export default signup_controller;

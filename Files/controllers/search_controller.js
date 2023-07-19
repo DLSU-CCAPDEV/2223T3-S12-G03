@@ -25,4 +25,5 @@ const search_controller = {
 
 }
 
-export default search_controller;
+module.exports = search_controller
+//export default search_controller;

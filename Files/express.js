@@ -48,10 +48,7 @@ app.use(function (req, res) {
 
 // connects to the database
 db.connect()
-commentModel_db.connect()
-postModel_db.connect()
-uploadMiddleware_db.connect()
-userModel_db.connect()
+
 
 app.listen(port, hostname, function(){
     console.log("Server running at: ")

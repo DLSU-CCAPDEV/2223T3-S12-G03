@@ -1,4 +1,8 @@
+/*
 import multer from "multer";
+*/
+
+const multer = require("multer")
 
 const Storage = multer.diskStorage({
     destination: function (req, file, callback) {
@@ -14,4 +18,5 @@ var upload = multer({
     storage: Storage,
 }).single('image'); //Field name and max count
 
-export default upload;
+module.exports = upload
+//export default upload;

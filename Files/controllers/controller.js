@@ -1,8 +1,16 @@
+/*
 import db from '../models/db.js';
 import Post from '../models/PostModel.js';
 import Comment from '../models/CommentModel.js';
 import User from '../models/UserModel.js';
 import upload from "../models/uploadMiddleware.js";
+*/
+
+const db = require("../models/db.js")
+const Post = require("../models/PostModel.js")
+const Comment = require("../models/CommentModel.js")
+const User = require("../models/UserModel.js")
+const upload = require("../models/uploadMiddleware.js")
 
 const defaultUser = "BigChungus";
 
@@ -511,4 +519,5 @@ const controller = {
 
 }
 
-export default controller;
+module.exports = controller
+//export default controller;

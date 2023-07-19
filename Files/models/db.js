@@ -1,4 +1,8 @@
+/*
 import mongoose from 'mongoose';
+*/
+
+const mongoose = require("mongoose")
 
 const url = process.env.DB_URL;
 
@@ -77,4 +81,5 @@ const database = {
 
 }
 
-export default database;
+module.exports = database
+//export default database;

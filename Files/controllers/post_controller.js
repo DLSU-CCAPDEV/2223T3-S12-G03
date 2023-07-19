@@ -1,6 +1,12 @@
+/*
 import db from '../models/db.js';
 import Post from '../models/PostModel.js';
 import Comment from '../models/CommentModel.js';
+*/
+
+const db = require("../models/db.js")
+const Post = require("../models/PostModel.js")
+const Comment = require("../models/CommentModel.js")
 
 const post_controller = {
     editPost: function (req, res) {
@@ -54,4 +60,5 @@ const post_controller = {
     }
 }
 
-export default post_controller;
+module.exports = post_controller
+//export default post_controller;
