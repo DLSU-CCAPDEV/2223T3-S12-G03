@@ -21,7 +21,7 @@ const app = express()
 // partials
 hbs.registerPartials(__dirname + "/views/partials")
 
-// view engine
+// view engine as hbs
 app.set("view engine", "hbs")
 
 //body parser
