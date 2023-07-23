@@ -12,7 +12,7 @@ const signup_controller = {
             res.send(data);
         })
     },
-
+    
     getCheckUsername: function (req, res) {
         db.findOne(User, {username: req.query.username}, null, (data) => {
             res.send(data);
@@ -20,8 +20,21 @@ const signup_controller = {
     },
 
     postLogin: function (req, res) {
+        
         db.findOne(User, {username: req.body.username, password: req.body.password}, null, (data) => {
-            res.send(data);
+            
+            // if user exists in database
+            if(data){
+                res.redirect("/home?username=" + req.body.username)
+            }
+
+            // no such user
+            else{
+                let details = {
+                    errorMessage: "User does not exist"
+                }
+                res.render("login", details)
+            }
         })
     },
 
@@ -31,7 +44,7 @@ const signup_controller = {
 
         var user = {
             username: username,
-            password: password,
+            password: password
         }
         console.log(user.username + ": username");
         

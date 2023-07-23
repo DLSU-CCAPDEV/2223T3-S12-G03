@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <link rel="stylesheet" href="/css/login-registration.css">
-    <script type="text/javascript" src="/js/login.js"></script>
 </head>
 <body>
     <div class="login-form">
@@ -28,7 +27,7 @@
                 <label>Remember me?</label>
             </div>
 
-            <p id="loginError"></p>
+            <p id="loginError">{{errorMessage}}</p>
         
             <input type="submit" value="Login" id="loginBtn">
 

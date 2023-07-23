@@ -25,6 +25,7 @@ app.get("/signup", controller.getSignup)
 app.post("/signup", signup_controller.postSignUp)
 
 app.get("/login", controller.getLogin)
+app.post("/login", signup_controller.postLogin)
 
 app.get("/profile", controller.getProfile)
 
