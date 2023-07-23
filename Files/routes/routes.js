@@ -15,6 +15,8 @@ const app = express()
 // general routes
 app.get('/favicon.ico', controller.getFavicon)
 
+app.get("/404", controller.get404)
+
 app.get("/", controller.getHome)
 
 app.get("/home", controller.getHome)

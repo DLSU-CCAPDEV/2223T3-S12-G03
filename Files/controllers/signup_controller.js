@@ -31,7 +31,7 @@ const signup_controller = {
 
         var user = {
             username: username,
-            password: password
+            password: password,
         }
         console.log(user.username + ": username");
         
@@ -39,7 +39,7 @@ const signup_controller = {
         db.insertOne (User, user, function (flag) {
             if (flag) {
                 console.log("success")
-                res.redirect('login');
+                res.redirect('home');
             }
         }); 
     },

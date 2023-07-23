@@ -32,6 +32,10 @@ const controller = {
         res.status(204);
     },
 
+    get404: function(req, res){
+        res.render("404")
+    },
+
     //Temporary Home page 
     getHome: function(req, res) {
         console.log("@/home");
@@ -79,7 +83,7 @@ const controller = {
 
     //Temporary Profile page
     getProfile: function(req, res) {
-        //console.log("@/profile");
+        console.log("@/profile");
         var username = req.params.username
         var ArrComments = [], ArrPosts = [], ArrUsers = [], ArrGames = [];
         var i, x;
@@ -138,7 +142,7 @@ const controller = {
                             });
                   }
                   else {
-                    res.render("404.hbs");
+                    res.redirect("../404");
                   }
             })
         }
@@ -429,7 +433,7 @@ const controller = {
             
         }
         else{
-            res.render("404");
+            res.redirect("../404");
         }
         
     },
@@ -506,7 +510,7 @@ const controller = {
                 })
             }
             else{
-                res.render("404");
+                res.redirect("../404");
             }
         })
     },
