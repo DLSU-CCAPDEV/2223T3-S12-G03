@@ -15,15 +15,11 @@ const hbs = require("hbs")
 const routes = require("./routes/routes.js")
 
 const db = require("./models/db.js")
-const commentModel_db = require("./models/CommentModel.js")
-const postModel_db = require("./models/PostModel.js")
-const uploadMiddleware_db = require("./models/uploadMiddleware.js")
-const userModel_db = require("./models/UserModel.js")
 
 const app = express()
 
 // partials
-hbs.registerPartials(__dirname, "/views/partials")
+hbs.registerPartials(__dirname + "/views/partials")
 
 // view engine
 app.set("view engine", "hbs")

@@ -13,9 +13,15 @@ const signup_controller = require("../controllers/signup_controller.js")
 const app = express()
 
 
-app.get("/", function(req, res){
-    res.sendFile("index.html")
-})
+app.get("/", controller.getHome)
+
+app.get("/signup", controller.getSignup)
+
+app.get("/login", controller.getLogin)
+
+app.get("/profile", controller.getProfile)
+
+app.get("/forum", controller.getForum)
 
 
 module.exports = app
