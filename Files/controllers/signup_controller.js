@@ -27,13 +27,11 @@ const signup_controller = {
 
     postSignUp: function (req, res) {
         var username = req.body.username;
-        var email = req.body.email;
         var password = req.body.password;
 
         var user = {
             username: username,
-            email: email,
-            password: password,
+            password: password
         }
         console.log(user.username + ": username");
         
@@ -41,7 +39,7 @@ const signup_controller = {
         db.insertOne (User, user, function (flag) {
             if (flag) {
                 console.log("success")
-                res.render('home', user);
+                res.redirect('login');
             }
         }); 
     },

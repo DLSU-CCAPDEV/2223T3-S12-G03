@@ -138,9 +138,7 @@ const controller = {
                             });
                   }
                   else {
-                        res.render('error',{
-                              title: "Page Not Found"
-                        });
+                    res.render("404.hbs");
                   }
             })
         }
@@ -431,9 +429,7 @@ const controller = {
             
         }
         else{
-            res.render('error',{
-                title: "File not found"
-            });
+            res.render("404");
         }
         
     },
@@ -510,9 +506,7 @@ const controller = {
                 })
             }
             else{
-                res.render('error',{
-                    title: "File not found"
-                });
+                res.render("404");
             }
         })
     },

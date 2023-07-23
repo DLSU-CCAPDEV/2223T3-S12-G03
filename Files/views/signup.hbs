@@ -6,25 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Page</title>
     <link rel="stylesheet" href="../css/login-registration.css">
+    <script type="text/javascript" src="/js/signup.js"></script>
 </head>
 <body>
     <div class="registration-form">
         <h1>Register</h1>
 
-        <!--to be added in the future. //displays "username is already taken"-->
-        <div class="invalid-registration"></div>
-
         <form method="post">
             <div class="input-field">
-                <input type="text" required>
+                <input type="text" name="username" required>
                 <label>Enter a username</label>
             </div>
 
             <div class="input-field">
-                <input type="password" required>
+                <input type="password" name="password" required>
                 <label>Enter a password</label>
             </div>
         
+            <p id="invalid-registration"></p>
+
             <input type="submit" value="Register">
 
             <div class="switch-page">
