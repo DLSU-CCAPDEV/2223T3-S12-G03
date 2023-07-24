@@ -83,13 +83,14 @@ const controller = {
 
     //Temporary Profile page
     getProfile: function(req, res) {
-        console.log("@/profile");
         var username = req.params.username
+        console.log("@/profile/" + username);
         var ArrComments = [], ArrPosts = [], ArrUsers = [], ArrGames = [];
         var i, x;
 
         if (username == null){
-            res.redirect('/profile/BigChungus') //default profile
+            //res.redirect('/profile/BigChungus') //default profile
+            res.redirect("login") // defaults to login page
         }
         else {
             //Get comments of user

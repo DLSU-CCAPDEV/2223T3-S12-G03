@@ -10,7 +10,7 @@ hostname = process.env.HOSTNAME
 
 const express = require("express")
 
-const hbs = require("hbs")
+const exphbs = require("express-handlebars")
 
 const routes = require("./routes/routes.js")
 
@@ -18,8 +18,11 @@ const db = require("./models/db.js")
 
 const app = express()
 
-// partials
-hbs.registerPartials(__dirname + "/views/partials")
+//
+app.engine("hbs", exphbs.engine({
+    defaultLayout: "main",
+    extname: ".hbs"
+}))
 
 // view engine as hbs
 app.set("view engine", "hbs")

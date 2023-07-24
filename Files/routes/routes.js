@@ -12,7 +12,7 @@ const signup_controller = require("../controllers/signup_controller.js")
 
 const app = express()
 
-// general routes
+
 app.get('/favicon.ico', controller.getFavicon)
 
 app.get("/404", controller.get404)
@@ -28,18 +28,17 @@ app.get("/login", controller.getLogin)
 app.post("/login", signup_controller.postLogin)
 
 app.get("/profile", controller.getProfile)
+app.get("/profile/:username", controller.getProfile)
+
+app.get("/genre", controller.getGenre)
 
 app.get("/forum", controller.getForum)
 
+app.get("/create", controller.getCreate)
 
 // routes for specific games
-app.get("/page/:valorant", controller.getPage)
+app.get("/page/:game", controller.getPage)
 
-app.get("/page/:apexlegends", controller.getPage)
-
-app.get("/page/:fortnite", controller.getPage)
-
-app.get("/page/:eldenring", controller.getPage)
 
 
 
