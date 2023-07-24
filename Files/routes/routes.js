@@ -35,10 +35,13 @@ app.get("/genre", controller.getGenre)
 app.get("/forum", controller.getForum)
 
 app.get("/create", controller.getCreate)
+app.post("/create", controller.postAddPost)
 
 // routes for specific games
 app.get("/page/:game", controller.getPage)
 
+
+app.get("/post/:id", controller.getPost)
 
 
 
