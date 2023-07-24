@@ -3,12 +3,22 @@
 </head>
 <div id="sidebar">
     <div id="sidebar_container">
+        {{#if username}}
+        <div id="user_container" class="icon_container">
+            <a href="/profile/{{username}}"><p id="nav_user" class="nav_icon"></p></a>
+            <p class="nav_text">USER</p>
+
+            <!--        <div id="user_container" class="icon_container"> -->
+        </div>
+        {{else}}
         <div id="user_container" class="icon_container">
             <a href="/profile"><p id="nav_user" class="nav_icon"></p></a>
             <p class="nav_text">USER</p>
 
             <!--        <div id="user_container" class="icon_container"> -->
         </div>
+        {{/if}}
+        
     
         <div id="nav_center">
             <div class="icon_container">
@@ -21,11 +31,18 @@
                 <button type="button" id="sidebar_search" class="sidebar-search"></button>
             </form>
 
+            {{#if username}}
+            <div class="icon_container">
+                <a href="/home?username={{username}}"><p class="nav_icon" id="nav_home"></p></a>
+                <p class="nav_text">HOME</p>
+            </div>
+            {{else}}
             <div class="icon_container">
                 <a href="/home"><p class="nav_icon" id="nav_home"></p></a>
                 <p class="nav_text">HOME</p>
             </div>
-
+            {{/if}}
+            
             <div class="icon_container">
                 <a href="/genre"> <p class="nav_icon" id="nav_genre"></p></a>
                 <p class="nav_text">GENRE</p>
@@ -34,6 +51,11 @@
             <div class="icon_container">
                 <a href="/forum"><p id="nav_forum" class="nav_icon"></p></a>
                 <p class="nav_text">FORUM</p>
+            </div>
+
+            <div class="icon_container">
+                <a href="/login"><p id="nav_logout" class="nav_icon"></p></a>
+                <p class="nav_text">LOGOUT</p>
             </div>
             
         </div>

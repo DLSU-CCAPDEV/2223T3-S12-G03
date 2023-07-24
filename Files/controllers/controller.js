@@ -38,7 +38,7 @@ const controller = {
 
     //Temporary Home page 
     getHome: function(req, res) {
-        console.log("@/home");
+        console.log("@/home/" + req.query.username);
         db.findMany(Post, {}, {}, function(data){
             if(data.length >= 1){
                 var details = [];
@@ -56,12 +56,14 @@ const controller = {
                 details = details.reverse();
                 res.render('home', {
                     title: "Homepage",
-                    posts: details.slice(0,5)
+                    posts: details.slice(0,5),
+                    username: req.query.username
                 })
             }
             else{
                 res.render('home',{
-                    title:"Homepage"
+                    title:"Homepage",
+                    username: req.query.username
                 });
             }
             
