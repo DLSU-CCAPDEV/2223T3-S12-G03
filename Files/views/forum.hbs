@@ -6,7 +6,9 @@
                 <span>FORUMS | Latest Posts</span>
             </div>
             <div id="forum-body">
-                {{> forumpost}}
+                {{#each items}}
+                    {{> forumpost}}
+                {{/each}}
             </div>
     </div>
 </body>
