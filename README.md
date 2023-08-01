@@ -1,13 +1,33 @@
 # 2223T3-S12-G03
 Forum Web Application
 
+******************
+*** SETTING UP ***
+******************
+
+1. Download the files
+2. Launch the Windows command line inside the directory of files
+3. Use the command "node express.js"
+4. Launch your browser, and on the link, enter the hostname and port specified in the .env file (example: 127.0.0.1:9090)
+
+
 File Location System (not final):
- - all main files should be inside the "Files" folder (.html, .css, .js)
- - all images and other elements should placed inside the "elements" folder
+ - all static files should be inside the "public" folder (.html, .css, .js)
+ - all images and other elements should placed inside the "public/elements" folder
+ - all dynamic pages should be stored inside "views"
 
 TODO (incomplete functionalities):
-- Edit a comment (fix bugs)
-- Improve design
+- Uploading of image in create post does not work
+- Search does not work
+
+TO ADD
+- Login and Signup Validation
+- Password Hashing
+- User Session
+
+Last Addition (least priority)
+- Online database
+- Deployed website
 
 MP Specs(minimum functionalities):
 
