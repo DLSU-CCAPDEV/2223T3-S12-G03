@@ -28,12 +28,9 @@ const signup_controller = {
                 res.redirect("/home?username=" + req.body.username)
             }
 
-            // no such user
+            // no such user that matches both username and password
             else{
-                let details = {
-                    errorMessage: "User does not exist"
-                }
-                res.render("login", details)
+                res.render("login", {title: "Login", errorMessage: "Username/Password incorrect"})
             }
         })
     },
@@ -52,7 +49,7 @@ const signup_controller = {
         db.insertOne (User, user, function (flag) {
             if (flag) {
                 console.log("success")
-                res.redirect('home');
+                res.redirect('/login');
             }
         }); 
     },
