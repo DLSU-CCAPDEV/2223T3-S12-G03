@@ -22,6 +22,7 @@ app.get("/", controller.getHome)
 app.get("/home", controller.getHome)
 
 app.get("/signup", controller.getSignup)
+app.get("/signupCheckUsername", signup_controller.getCheckUsername)
 app.post("/signup", signup_controller.postSignUp)
 
 app.get("/login", controller.getLogin)
@@ -41,7 +42,8 @@ app.post("/create", controller.postAddPost)
 app.get("/page/:game", controller.getPage)
 
 
-app.get("/post/:id", controller.getPost)
+app.get("/post/:id", controller.getPost, 
+        post_controller.addComment, post_controller.deletePost, post_controller.editPost, post_controller.editVotes)
 
 
 

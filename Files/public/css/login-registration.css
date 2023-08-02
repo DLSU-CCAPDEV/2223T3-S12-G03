@@ -127,6 +127,10 @@ input[type="submit"]:active{
     transform: scale(105%);
 }
 
+input[type="submit"]:disabled{
+    background-color: #18322b;
+}
+
 .switch-page{
     color: white;
     text-align: center;
