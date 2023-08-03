@@ -18,7 +18,6 @@ File Location System (not final):
 
 TODO (incomplete functionalities):
 - Uploading of image in create post does not work
-- Search does not work
 
 TO ADD
 - Signup Validation (server side)

@@ -25,6 +25,8 @@ app.get("/signup", controller.getSignup)
 app.get("/signupCheckUsername", signup_controller.getCheckUsername)
 app.post("/signup", signup_controller.postSignUp)
 
+app.get("/search/:key", search_controller.searchPage)
+
 app.get("/login", controller.getLogin)
 app.post("/login", signup_controller.postLogin)
 
