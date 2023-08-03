@@ -6,6 +6,9 @@ import User from '../models/UserModel.js';
 const db = require("../models/db.js")
 const User = require("../models/UserModel.js")
 
+const bcrypt = require("bcrypt")
+const SALT_ROUNDS = 10
+
 const signup_controller = {
     getCheckEmail: function (req, res) {
         db.findOne(User, {email: req.query.email}, null, (data) => {
@@ -21,14 +24,27 @@ const signup_controller = {
 
     postLogin: function (req, res) {
         
-        db.findOne(User, {username: req.body.username, password: req.body.password}, null, (data) => {
+        db.findOne(User, {username: req.body.username}, null, (data) => {
             
             // if user exists in database
             if(data){
-                res.redirect("/home?username=" + req.body.username)
+                bcrypt.compare(req.body.password, data.password, function(err, equal){
+                    
+                    // handles both plaintext password and hashed password
+                    if(equal || req.body.password == data.password){
+                        res.redirect("/home?username=" + req.body.username)
+                    }
+
+                    // incorrect details
+                    else{
+                        res.render("login", {title: "Login", errorMessage: "Username/Password incorrect"})
+                    }
+                })
+
+                
             }
 
-            // no such user that matches both username and password
+            // no such user
             else{
                 res.render("login", {title: "Login", errorMessage: "Username/Password incorrect"})
             }
@@ -36,22 +52,29 @@ const signup_controller = {
     },
 
     postSignUp: function (req, res) {
-        var username = req.body.username;
-        var password = req.body.password;
+        let username = req.body.username;
+        let password = req.body.password;
 
-        var user = {
-            username: username,
-            password: password
-        }
-        console.log(user.username + ": username");
-        
-        //add to database
-        db.insertOne (User, user, function (flag) {
-            if (flag) {
-                console.log("success")
-                res.redirect('/login');
+        bcrypt.hash(password, SALT_ROUNDS, function(err, hash){
+
+            let user = {
+                username: username,
+                password: hash
             }
-        }); 
+            console.log(user.username + ": username");
+            
+
+            //add to database
+            db.insertOne (User, user, function (flag) {
+                if (flag) {
+                    console.log("Signup success")
+                    res.redirect('/login');
+                }
+            }); 
+
+        })
+
+        
     },
 
     updateUser: function (req, res) {

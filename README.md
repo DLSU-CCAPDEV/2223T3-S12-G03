@@ -21,8 +21,7 @@ TODO (incomplete functionalities):
 - Search does not work
 
 TO ADD
-- Login and Signup Validation
-- Password Hashing
+- Signup Validation (server side)
 - User Session
 
 Last Addition (least priority)
