@@ -18,9 +18,9 @@ File Location System (not final):
 
 TODO (incomplete functionalities):
 - Uploading of image in create post does not work
+- Upvote/Downvote not working
 
 TO ADD
-- Signup Validation (server side)
 - User Session
 
 Last Addition (least priority)
