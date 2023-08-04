@@ -3,6 +3,8 @@ import db from '../models/db.js';
 import User from '../models/UserModel.js';
 */
 
+const { validationResult } = require("express-validator")
+
 const db = require("../models/db.js")
 const User = require("../models/UserModel.js")
 
@@ -10,11 +12,6 @@ const bcrypt = require("bcrypt")
 const SALT_ROUNDS = 10
 
 const signup_controller = {
-    getCheckEmail: function (req, res) {
-        db.findOne(User, {email: req.query.email}, null, (data) => {
-            res.send(data);
-        })
-    },
     
     getCheckUsername: function (req, res) {
         db.findOne(User, {username: req.query.username}, null, (data) => {
@@ -52,28 +49,54 @@ const signup_controller = {
     },
 
     postSignUp: function (req, res) {
-        let username = req.body.username;
-        let password = req.body.password;
 
-        bcrypt.hash(password, SALT_ROUNDS, function(err, hash){
+        let errors = validationResult(req)
 
-            let user = {
-                username: username,
-                password: hash
+        if(!errors.isEmpty()){
+
+            errors = errors.errors
+
+            let details = {}
+
+            for(i=0; i < errors.length; i++){
+                details["invalid_registration_" + errors[i].param] = errors[i].msg
             }
-            console.log(user.username + ": username");
-            
 
-            //add to database
-            db.insertOne (User, user, function (flag) {
-                if (flag) {
-                    console.log("Signup success")
-                    res.redirect('/login');
+            res.render("signup", details)
+
+        }
+
+        else{
+
+            let username = req.body.username;
+            let password = req.body.password;
+
+            bcrypt.hash(password, SALT_ROUNDS, function(err, hash){
+
+                let user = {
+                    username: username,
+                    password: hash
                 }
-            }); 
+                console.log(user.username + ": username");
+                
 
-        })
+                //add to database
+                db.insertOne (User, user, function (flag) {
+                    if (flag) {
+                        console.log("Signup success")
+                        res.redirect('/login');
+                    }
 
+                    else{
+                        console.log("Signup failed")
+                        res.render("signup", {invalid_registration_username: "Username already exists!"})
+                    }
+                }); 
+
+            })
+
+        }
+        
         
     },
 

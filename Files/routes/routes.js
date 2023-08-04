@@ -8,7 +8,7 @@ const search_controller = require("../controllers/search_controller.js")
 
 const signup_controller = require("../controllers/signup_controller.js")
 
-// const validation = require("../helpers/validation.js")
+const validation = require("../helpers/validation.js")
 
 const app = express()
 
@@ -23,7 +23,7 @@ app.get("/home", controller.getHome)
 
 app.get("/signup", controller.getSignup)
 app.get("/signupCheckUsername", signup_controller.getCheckUsername)
-app.post("/signup", signup_controller.postSignUp)
+app.post("/signup", validation.signupValidation(), signup_controller.postSignUp)
 
 app.get("/search/:key", search_controller.searchPage)
 
