@@ -45,14 +45,14 @@ app.use(express.static("public"))
 
 
 // connects to the database
-db.connect(local_db_url)
+db.connect(online_db_url)
 
 // session
 app.use(session({
     "secret": "forum-session",
     "resave": false,
     "saveUninitialized": false,
-    store: MongoStore.create({mongoUrl: local_db_url})
+    store: MongoStore.create({mongoUrl: online_db_url})
 }))
 
 
