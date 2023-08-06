@@ -1,0 +1,26 @@
+<body id={{background}}>
+    {{> sidebar}}
+        <div id="home-page-container">
+            <div id="game-page-header">
+                <div id="game-page-name">{{gamepage}}</div>
+            </div>
+            <div id="trending-games" class="home-pages">
+                <p>Trending Games</p>
+                <div class="games">
+                    <a href="/page/valorant"><img class="game-logo" src="../elements/valorant.jpg" /></a>
+                    <a href="/page/apexlegends"><img class="game-logo" src="../elements/apex.jpg" /></a>
+                    <a href="/page/fortnite"><img class="game-logo" src="../elements/fortnite.jpg" /></a>
+                    <a href="/page/eldenring"><img class="game-logo" src="../elements/eldenring.jpg" /></a>
+                </div>
+            </div>
+
+            
+            <div class ="home-pages">
+                <p>Latest Post</p>
+                 {{#each posts}}
+                    {{>postbox this}}
+                {{/each}}
+                
+            </div>
+        </div>    
+    </body>

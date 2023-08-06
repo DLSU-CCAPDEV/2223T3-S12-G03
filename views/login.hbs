@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/css/login-registration.css">
+</head>
+<body>
+    <div class="login-form">
+        <h1>Login</h1>
+
+        <form method="post">
+            <div class="input-field">
+                <input type="text" name="username" id="login_uname" required autocomplete="off">
+                <label>Username</label>
+            </div>
+
+            <div class="input-field">
+                <input type="password" name="password" id="login_password" required>
+                <label>Password</label>
+            </div>
+
+            <div class="remember-me">
+                <input type="checkbox">
+                <label>Remember me?</label>
+            </div>
+
+            <p id="loginError">{{errorMessage}}</p>
+        
+            <input type="submit" value="Login" id="loginBtn">
+
+            <div class="switch-page">
+                Don't have an account? <a href="/signup">Signup</a>
+            </div>
+
+            <div class="switch-page">
+                Continue as <a href="/home">Guest</a>
+            </div>
+
+        </form>
+    </div>
+</body>
+</html>
