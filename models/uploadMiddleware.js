@@ -1,7 +1,7 @@
 /*
 import multer from "multer";
 */
-/*
+
 const multer = require("multer")
 
 const Storage = multer.diskStorage({
@@ -20,4 +20,4 @@ var upload = multer({
 }).single('image'); //Field name and max count
 
 module.exports = upload
-//export default upload;*/
+//export default upload;
