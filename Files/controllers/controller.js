@@ -38,6 +38,10 @@ const controller = {
 
     //Temporary Home page 
     getHome: function(req, res) {
+
+        let isGuest = true
+        if(req.session.username) isGuest = false
+
         console.log("@/home/" + req.session.username);
         db.findMany(Post, {}, {}, function(data){
             if(data.length >= 1){
@@ -53,17 +57,21 @@ const controller = {
                     details[i] = detail; 
                     i++;
                 }
+
                 details = details.reverse();
                 res.render('home', {
                     title: "Homepage",
                     posts: details.slice(0,5),
-                    username: req.session.username
+                    username: req.session.username,
+                    guest: isGuest
                 })
+
             }
             else{
                 res.render('home',{
                     title:"Homepage",
-                    username: req.params.username
+                    username: req.session.username,
+                    guest: isGuest
                 });
             }
             
@@ -78,9 +86,17 @@ const controller = {
     },
 
     getLogin: function(req, res) {
-        res.render('login', {
-            title: "Login"
-        });
+
+        if(req.session.username){
+            res.redirect("/home")
+        }
+
+        else{
+            res.render('login', {
+                title: "Login"
+            });
+        }
+        
     },
 
     getLogout: function(req, res){
@@ -228,16 +244,24 @@ const controller = {
 
     //Genre page
     getGenre: function(req, res) {
+
+        let isGuest = true
+        if(req.session.username) isGuest = false
+
         console.log("@/genre");
         
         res.render('genre',{
-            title:"Genre"
+            title:"Genre",
+            guest: isGuest
         });
         
         
     },
     //Temporary Forum page (Need to fix uploading images)
     getForum: function(req, res) {
+        let isGuest = true
+        if(req.session.username) isGuest = false
+
         console.log("@/forum");
         db.findMany(Post, {}, {}, function(result){
             if(result.length >= 1){
@@ -262,12 +286,14 @@ const controller = {
                 details = details.reverse();
                 res.render('forum', {
                     title: "Forum",
-                    items: details
+                    items: details,
+                    guest: isGuest
                 })
             }
             else{
                 res.render('forum', {
-                    title: "Forum"
+                    title: "Forum",
+                    guest: isGuest
                 })
             }
         })
@@ -279,9 +305,15 @@ const controller = {
     getCreate: function(req, res) {
         console.log("@/create");
         
-        res.render('create',{
-            title:"Create"
-        });
+        if(req.session.username){
+            res.render('create',{
+                title:"Create"
+            });
+        }
+        
+        else{
+            res.redirect("login")
+        }
     },
 
     //Temporary adding post function (need to fix saving images)
@@ -306,7 +338,7 @@ const controller = {
                 image = "";
             }
             else{
-                image = ""//req.file.filename;
+                image = req.file.filename;
             }
 
             while(db.findOne(Post, {postid:postid}, {}, function(flag){})){
@@ -336,6 +368,10 @@ const controller = {
 
     //Maybe temporary Game page
     getPage: function(req, res) {
+
+        let isGuest = true
+        if(req.session.username) isGuest = false
+
         var game = req.params.game;
         console.log("@/page/"+ game);
 
@@ -360,14 +396,16 @@ const controller = {
                         title: "Apex Legends",
                         background: "apex-wallpaper",
                         gamepost:"APEX LEGENDS",
-                        posts: details.slice(0,5)
+                        posts: details.slice(0,5),
+                        guest: isGuest
                     })
                 }
                 else{
                     res.render('page',{
                         title:"Apex Legends",
                         background:"apex-wallpaper",
-                        gamepost:"APEX LEGENDS"
+                        gamepost:"APEX LEGENDS",
+                        guest: isGuest
                     });
                 }
             })
@@ -394,21 +432,23 @@ const controller = {
                         title: "Valorant",
                         background: "valorant-wallpaper",
                         gamepost:"VALORANT",
-                        posts: details.slice(0,5)
+                        posts: details.slice(0,5),
+                        guest: isGuest
                     })
                 }
                 else{
                     res.render('page',{
                         title:"Valorant",
                         background:"valorant-wallpaper",
-                        gamepost:"VALORANT"
+                        gamepost:"VALORANT",
+                        guest: isGuest
                     });
                 }
             })
             
         }
         else if(game == "fortnite"){
-            db.findMany(Post, {game: "Fornite"}, {}, function(data){
+            db.findMany(Post, {game: "Fortnite"}, {}, function(data){
                 if(data.length >= 1){
                     var details = [];
                     var i = 0;
@@ -428,14 +468,16 @@ const controller = {
                         title: "Fortnite",
                         background: "fortnite-wallpaper",
                         gamepost:"FORTNITE",
-                        posts: details.slice(0,5)
+                        posts: details.slice(0,5),
+                        guest: isGuest
                     })
                 }
                 else{
                     res.render('page',{
                         title:"Fortnite",
                         background:"fortnite-wallpaper",
-                        gamepost:"FORTNITE"
+                        gamepost:"FORTNITE",
+                        guest: isGuest
                     });
                 }
             })
@@ -462,14 +504,16 @@ const controller = {
                         title: "Elden Ring",
                         background: "eldenring-wallpaper",
                         gamepost:"ELDEN RING",
-                        posts: details.slice(0,5)
+                        posts: details.slice(0,5),
+                        guest: isGuest
                     })
                 }
                 else{
                     res.render('page',{
                         title:"Elden Ring",
                         background:"eldenring-wallpaper",
-                        gamepost:"ELDEN RING"
+                        gamepost:"ELDEN RING",
+                        guest: isGuest
                     });
                 }
             })
@@ -496,14 +540,16 @@ const controller = {
                         title: "Mario Odyssey",
                         background: "odyssey-wallpaper",
                         gamepost:"MARIO ODYSSEY",
-                        posts: details.slice(0,5)
+                        posts: details.slice(0,5),
+                        guest: isGuest
                     })
                 }
                 else{
                     res.render('page',{
                         title:"Mario Odyssey",
                         background:"odyssey-wallpaper",
-                        gamepost:"MARIO ODYSSEY"
+                        gamepost:"MARIO ODYSSEY",
+                        guest: isGuest
                     });
                 }
             })
@@ -517,6 +563,10 @@ const controller = {
 
     //Maybe temporary Post page
     getPost: function(req, res) {
+
+        let isGuest = true
+        if(req.session.username) isGuest = false
+
         console.log("@/post/"+ req.params.id);
         var query = {postid: req.params.id};
 
@@ -566,7 +616,8 @@ const controller = {
                         postDesc: data['postDesc'],
                         vote: data['vote'],
                         commentbox: commentArr,
-                        postid: data['postid']
+                        postid: data['postid'],
+                        guest: isGuest
                         })
 
                   }
@@ -581,7 +632,8 @@ const controller = {
                         image: data['image'],
                         postDesc: data['postDesc'],
                         vote: data['vote'],
-                        postid: data['postid']
+                        postid: data['postid'],
+                        guest: isGuest
                         })
                   }
                 })

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home</title>
+        <link rel="stylesheet" type="text/css" media="all" href="/css/index.css">
+        <link rel="stylesheet" type="text/css" media="all" href="/css/forum.css">
+        <link rel="stylesheet" type="text/css" media="all" href="/css/create.css">
+        <link rel="stylesheet" type="text/css" media="all" href="/css/profile.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script type="text/javascript" src="/js/create.js"></script>
+        <script type="text/javascript" src="/js/forumactions.js"></script>
+        <script type="text/javascript" src="/js/postactions.js"></script>
+        
+        
+    </head>
+    <body>
+        {{> sidebar}}
+
+        <div id="home-page-container">
+            <form id="home-header">
+                <span>HOME</span>
+                <input class="search-bar" id="search-bar" type="text" placeholder="Search anything here..." required>
+            </form>
+            <div id="trending-games" class="home-pages">
+                <p>Trending Games</p>
+                <div class="games">
+                    <a href="/page/valorant"><img class="game-logo" src="/elements/valorant.jpg" /></a>
+                    <a href="/page/apexlegends"><img class="game-logo" src="/elements/apex.jpg" /></a>
+                    <a href="/page/fortnite"><img class="game-logo" src="/elements/fortnite.jpg" /></a>
+                    <a href="/page/eldenring"><img class="game-logo" src="/elements/eldenring.jpg" /></a>
+                </div>
+            </div>
+            
+            <div id="latest-post" class="home-pages">
+                <p>Latest Post</p>
+                {{#each posts}}
+                    {{>postbox this}} 
+                {{/each}}
+            </div>
+        </div>
+    </body>
+</html>     

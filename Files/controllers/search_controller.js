@@ -18,26 +18,30 @@ const search_controller = {
                 let i = 0;
                 for(let input of result){
 
-                    let game = input["game"].toLowerCase()
-                    let username = input["username"].toLowerCase()
-                    let postTitle = input["postTitle"].toLowerCase()
+                    // will not work if any of these 3 have no value
+                    if(input["game"] && input["username"] && input["postTitle"]){
 
-                    // will only send posts search.hbs that matches the search key
-                    if (game.includes(searchKey) || username.includes(searchKey) || postTitle.includes(searchKey)){
-                        let detail = {
-                            game: input['game'],
-                            username: input['username'],
-                            postDate: input['postDate'],
-                            postTitle: input['postTitle'],
-                            image: input['image'],
-                            postDesc: input['postDesc'],
-                            vote: input['vote'],
-                            commentNo: input['commentNo'],
-                            postid: input['postid'],
+                        let game = input["game"].toLowerCase()
+                        let username = input["username"].toLowerCase()
+                        let postTitle = input["postTitle"].toLowerCase()
+    
+                        // will only send posts search.hbs that matches the search key
+                        if (game.includes(searchKey) || username.includes(searchKey) || postTitle.includes(searchKey)){
+                            let detail = {
+                                game: input['game'],
+                                username: input['username'],
+                                postDate: input['postDate'],
+                                postTitle: input['postTitle'],
+                                image: input['image'],
+                                postDesc: input['postDesc'],
+                                vote: input['vote'],
+                                commentNo: input['commentNo'],
+                                postid: input['postid'],
+                            }
+                            console.log(detail);
+                            details[i] = detail; 
+                            i++;
                         }
-                        console.log(detail);
-                        details[i] = detail; 
-                        i++;
                     }
                     
                 }

@@ -53,10 +53,17 @@
                 <p class="nav_text">FORUM</p>
             </div>
 
+        {{#if guest}}
+            <div class="icon_container">
+                <a href="/logout"><p id="nav_login" class="nav_icon"></p></a>
+                <p class="nav_text">LOGIN</p>
+            </div>
+        {{else}}
             <div class="icon_container">
                 <a href="/logout"><p id="nav_logout" class="nav_icon"></p></a>
                 <p class="nav_text">LOGOUT</p>
             </div>
+        {{/if}}
             
         </div>
     
