@@ -66,8 +66,9 @@ app.use(function (req, res) {
 });
 
 
-app.listen(port, hostname, function(){
+app.listen(port, function(){
     console.log("Server running at: ")
-    console.log("http://" + hostname + ":" + port)
+    console.log("PORT: " + port)
+    //console.log("http://" + hostname + ":" + port)
 })
 
