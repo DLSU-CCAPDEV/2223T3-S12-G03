@@ -1,6 +1,6 @@
 const express = require("express")
-const multer = require("multer")
-const upload = multer({dest: "/public/uploads"})
+//const multer = require("multer")
+//const upload = multer({dest: "/public/uploads"})
 
 const controller = require("../controllers/controller.js")
 

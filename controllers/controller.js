@@ -338,7 +338,7 @@ const controller = {
                 image = "";
             }
             else{
-                image = req.file.filename;
+                image = ""//req.file.filename;
             }
 
             while(db.findOne(Post, {postid:postid}, {}, function(flag){})){
