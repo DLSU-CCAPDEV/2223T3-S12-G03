@@ -38,7 +38,7 @@ const controller = {
 
     //Temporary Home page 
     getHome: function(req, res) {
-        console.log("@/home/" + req.query.username);
+        console.log("@/home/" + req.session.username);
         db.findMany(Post, {}, {}, function(data){
             if(data.length >= 1){
                 var details = [];
@@ -57,13 +57,13 @@ const controller = {
                 res.render('home', {
                     title: "Homepage",
                     posts: details.slice(0,5),
-                    username: req.query.username
+                    username: req.session.username
                 })
             }
             else{
                 res.render('home',{
                     title:"Homepage",
-                    username: req.query.username
+                    username: req.params.username
                 });
             }
             
@@ -81,6 +81,80 @@ const controller = {
         res.render('login', {
             title: "Login"
         });
+    },
+
+    getLogout: function(req, res){
+        req.session.destroy(function(error){
+            if (error) throw error
+
+            res.redirect("/login")
+        })
+    },
+
+    getMyProfile: function(req, res) {
+        var username = req.session.username
+        console.log("@/profile");
+        var ArrComments = [], ArrPosts = [], ArrUsers = [], ArrGames = [];
+        var i, x;
+
+        if (username == null){
+            res.redirect("login")
+        }
+        else {
+            //Get comments of user
+            db.findMany (Comment, {author: username}, {}, function (usercomments) {
+                if (usercomments) {
+                
+                    for(i = 0; i < usercomments.length; i++) {
+                        var obj = {
+                            posttitle : usercomments[i]['postTitle'],
+                            comment : usercomments[i]['text'],
+                            commentdate : usercomments[i]['date'],
+                            postid: usercomments[i]['postid']
+                        }
+                        ArrComments[i] =  obj;
+                    }
+                }
+            });
+
+            //Get Posts
+            db.findMany(Post, {username: username}, {}, function (userposts) {
+                if (userposts) {
+
+                    for(i = 0; i < userposts.length; i++) {
+                        var obj = {
+                            postTitle : userposts[i]['postTitle'],
+                            postDesc : userposts[i]['postDesc'],
+                            postDate : userposts[i]['postDate'],
+                            postid: userposts[i]['postid']
+                        }
+
+                        ArrPosts[i] = obj;
+                        console.log(ArrPosts[i]);
+                    }
+                }
+            })
+
+            ArrPosts.reverse();
+
+            //Get user page
+            db.findOne(User, {username: username}, {}, function(data){
+                  if (data != null) {
+                            res.render('profile', 
+                            {
+                                title:"Profile",
+                                username: data['username'],
+                                picture: data['picture'],
+                                profileDesc: data['profileDesc'],
+                                recentpost : ArrPosts.reverse().slice(0,5),
+                                recentcomment: ArrComments.reverse().slice(0,5),
+                            });
+                  }
+                  else {
+                    res.redirect("../404");
+                  }
+            })
+        }
     },
 
     //Temporary Profile page
@@ -220,7 +294,7 @@ const controller = {
                 return res.end("Something went wrong");
             }
 
-                var username = defaultUser;
+                var username = req.session.username;
                 var game = req.body.game;
                 var content = req.body.postDesc;
                 var postTitle = req.body.postTitle;
@@ -232,7 +306,7 @@ const controller = {
                 image = "";
             }
             else{
-                image = req.file.filename;
+                image = ""//req.file.filename;
             }
 
             while(db.findOne(Post, {postid:postid}, {}, function(flag){})){

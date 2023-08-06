@@ -29,7 +29,12 @@ const signup_controller = {
                     
                     // handles both plaintext password and hashed password
                     if(equal || req.body.password == data.password){
-                        res.redirect("/home?username=" + req.body.username)
+
+                        req.session.username = data.username
+                        req.session.picture = data.picture
+                        req.session.profileDesc = data.profileDesc
+
+                        res.redirect("/home/" + req.session.username)
                     }
 
                     // incorrect details
@@ -75,7 +80,9 @@ const signup_controller = {
 
                 let user = {
                     username: username,
-                    password: hash
+                    password: hash,
+                    picture: "default-profile.jpg",
+                    profileDesc: ""
                 }
                 console.log(user.username + ": username");
                 

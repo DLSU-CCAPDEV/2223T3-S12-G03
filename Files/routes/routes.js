@@ -1,4 +1,6 @@
 const express = require("express")
+const multer = require("multer")
+const upload = multer({dest: "/public/uploads"})
 
 const controller = require("../controllers/controller.js")
 
@@ -17,9 +19,11 @@ app.get('/favicon.ico', controller.getFavicon)
 
 app.get("/404", controller.get404)
 
-app.get("/", controller.getHome)
+app.get("/", controller.getLogin)
+app.post("/", signup_controller.postLogin)
 
 app.get("/home", controller.getHome)
+app.get("/home/:username", controller.getHome)
 
 app.get("/signup", controller.getSignup)
 app.get("/signupCheckUsername", signup_controller.getCheckUsername)
@@ -30,12 +34,14 @@ app.get("/search/:key", search_controller.searchPage)
 app.get("/login", controller.getLogin)
 app.post("/login", signup_controller.postLogin)
 
-app.get("/profile", controller.getProfile)
+app.get("/profile", controller.getMyProfile)
 app.get("/profile/:username", controller.getProfile)
 
 app.get("/genre", controller.getGenre)
 
 app.get("/forum", controller.getForum)
+
+app.get("/logout", controller.getLogout)
 
 app.get("/create", controller.getCreate)
 app.post("/create", controller.postAddPost)
@@ -44,8 +50,7 @@ app.post("/create", controller.postAddPost)
 app.get("/page/:game", controller.getPage)
 
 
-app.get("/post/:id", controller.getPost, 
-        post_controller.addComment, post_controller.deletePost, post_controller.editPost, post_controller.editVotes)
+app.get("/post/:id", controller.getPost)
 
 
 

@@ -5,12 +5,22 @@ Use in the terminal when there is no node_modules folder:
 
 const dotenv = require("dotenv")
 dotenv.config()
-port = process.env.PORT
-hostname = process.env.HOSTNAME
+const port = process.env.PORT
+const hostname = process.env.HOSTNAME
+const local_db_url = process.env.LOCAL_DB_URL
+const online_db_url = process.env.ONLINE_DB_URL
 
 const express = require("express")
 
 const exphbs = require("express-handlebars")
+
+const bodyParser = require("body-parser")
+
+const session = require("express-session")
+
+const MongoStore = require("connect-mongo")
+
+const bcrypt = require("bcrypt")
 
 const routes = require("./routes/routes.js")
 
@@ -34,7 +44,19 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.static("public"))
 
 
+// connects to the database
+db.connect(local_db_url)
 
+// session
+app.use(session({
+    "secret": "forum-session",
+    "resave": false,
+    "saveUninitialized": false,
+    store: MongoStore.create({mongoUrl: local_db_url})
+}))
+
+
+// VERY IMPORTANT: this needs to be below the code for session
 // routes for the webpages
 app.use("/", routes)
 
@@ -44,12 +66,8 @@ app.use(function (req, res) {
 });
 
 
-
-// connects to the database
-db.connect()
-
-
 app.listen(port, hostname, function(){
     console.log("Server running at: ")
     console.log("http://" + hostname + ":" + port)
 })
+

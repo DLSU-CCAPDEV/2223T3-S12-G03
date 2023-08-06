@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 
 const mongoose = require("mongoose")
 
-const url = process.env.DB_URL;
+//const url = process.env.LOCAL_DB_URL;
 
 // additional connection options
 const options = {
@@ -14,7 +14,7 @@ const options = {
 
 const database = {
 
-    connect: function () {
+    connect: function (url) {
         mongoose.connect(url, options, function(error) {
             if(error) throw error;
             console.log('Connected to: ' + url);
